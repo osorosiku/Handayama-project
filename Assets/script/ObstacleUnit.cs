@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ObstacleUnit : MonoBehaviour
 {
+    public int HitCount;
     // Start is called before the first frame update
     void Start()
     {
-
+        HitCount = 0;
     }
 
     // Update is called once per frame
@@ -20,6 +21,8 @@ public class ObstacleUnit : MonoBehaviour
     {
         //障害物にぶつかったときの処理はここに書く
         Debug.Log("Hit");
+        HitCount++;
         Destroy(gameObject);
+
     }
 }
