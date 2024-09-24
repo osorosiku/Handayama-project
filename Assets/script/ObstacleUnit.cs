@@ -19,10 +19,13 @@ public class ObstacleUnit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //障害物にぶつかったときの処理はここに書く
-        Debug.Log("Hit");
-        HitCount++;
-        Destroy(gameObject);
+        if (collision.gameObject.tag == "Player")
+        {
+            //障害物にぶつかったときの処理はここに書く
+            Debug.Log("Hit");
+            HitCount++;
+            Destroy(gameObject);
+        }
 
     }
 }
