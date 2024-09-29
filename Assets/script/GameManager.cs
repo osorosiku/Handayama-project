@@ -5,25 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    ObstacleUnit obstacleUnit;
-    GameObject obj;
-    public int cnt;
+    public int totalHitCount = 0; // 全体のヒット数を管理する変数
+    private ObstacleUnit[] obstacleUnits; // 障害物ユニットの配列
+
     // Start is called before the first frame update
     void Start()
     {
-        obj = GameObject.Find("testObj");
-        obstacleUnit = obj.GetComponent<ObstacleUnit>();
+        // シーン内のすべての ObstacleUnit コンポーネントを取得
+        obstacleUnits = FindObjectsOfType<ObstacleUnit>();
 
+        // 各 ObstacleUnit に GameManager を通知するためのメソッドを設定
+        foreach (var unit in obstacleUnits)
+        {
+            unit.SetGameManager(this);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        cnt = obstacleUnit.HitCount;
-        Debug.Log(cnt);
-        if (cnt >= 1)
+        Debug.Log("Total Hit Count: " + totalHitCount);
+        if (totalHitCount >= 3) // ヒット数の条件を満たしたらシーンを変更
         {
             SceneManager.LoadScene("Result");
         }
+    }
+
+    // ヒットカウントを増やすメソッドを作成
+    public void IncrementHitCount()
+    {
+        totalHitCount++;
     }
 }
