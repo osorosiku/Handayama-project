@@ -37,4 +37,3 @@ public class is_triger : MonoBehaviour
     }
 }
 
-//mer1
