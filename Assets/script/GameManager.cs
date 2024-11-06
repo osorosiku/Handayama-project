@@ -7,7 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public int totalHitCount = 0; // 全体のヒット数を管理する変数
     private ObstacleUnit[] obstacleUnits; // 障害物ユニットの配列
-    public gameLevel = 0;
+
+    public int[,,] stageGrid = new int[8, 40, 100]; //x,z,level
+
+
+
 
 
     void Start()
@@ -20,12 +24,16 @@ public class GameManager : MonoBehaviour
         {
             unit.SetGameManager(this);
         }
+
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Total Hit Count: " + totalHitCount);
+        // Debug.Log("Total Hit Count: " + totalHitCount);
         if (totalHitCount >= 3) // ヒット数の条件を満たしたらシーンを変更
         {
             SceneManager.LoadScene("Result");

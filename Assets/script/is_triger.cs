@@ -8,10 +8,14 @@ public class is_triger : MonoBehaviour
     public Transform stage_transform;
 
     private Vector3 nextstage_position;
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         nextstage_position = new Vector3(stage_transform.position.x, stage_transform.position.y, stage_transform.position.z + 100);
+        GameObject obj = GameObject.Find("GameManager");
+        gameManager = obj.GetComponent<GameManager>();
     }
 
     // Update is called once per frame

@@ -24,7 +24,7 @@ public class ObstacleUnit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit");
+
         HitCount++;
         Destroy(gameObject);
 

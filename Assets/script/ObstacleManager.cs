@@ -10,12 +10,25 @@ public class ObstacleManager : MonoBehaviour
     public GameObject obstacle;
     private Transform parent;
 
+    public int gameLevel = 0;
+
+    int[,,] stageGrid;
+
+
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         parent = this.transform;
         obstacle_position = new Vector3(0, 0, triger.position.z);
         Instantiate(obstacle, new Vector3(-1, 1, -8), Quaternion.identity, parent);
+        GameObject obj = GameObject.Find("GameManager");
+        gameManager = obj.GetComponent<GameManager>();
+        stageGrid = obj.GetComponent<GameManager>().stageGrid;
+        GenerateObstacle();
+
+
     }
 
     // Update is called once per frame
@@ -24,6 +37,25 @@ public class ObstacleManager : MonoBehaviour
 
     }
 
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 300, 20), "Game Level: " + gameLevel);
+    }
+    void GenerateObstacle()
+    {
+        float pz = -47;
+        for (int z = 0; z < 16; z++)
+        {
 
+            float px = -14;
+            for (int x = 0; x < 6; x++)
+            {
+                Instantiate(obstacle, new Vector3(px, 1, pz), Quaternion.identity, parent);
+                px += 5.5f;
+            }
+            pz += 6;
 
+        }
+
+    }
 }
