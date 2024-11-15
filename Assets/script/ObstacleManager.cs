@@ -25,7 +25,7 @@ public class ObstacleManager : MonoBehaviour
         GameObject obj = GameObject.Find("GameManager");
         gameManager = obj.GetComponent<GameManager>();
         stageGrid = obj.GetComponent<GameManager>().stageGrid;
-        GenerateObstacle();
+        // GenerateObstacle();
 
 
     }
