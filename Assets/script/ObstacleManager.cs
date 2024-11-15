@@ -22,7 +22,6 @@ public class ObstacleManager : MonoBehaviour
     {
         parent = this.transform;
         obstacle_position = new Vector3(0, 0, triger.position.z);
-        Instantiate(obstacle, new Vector3(-1, 1, -8), Quaternion.identity, parent);
         GameObject obj = GameObject.Find("GameManager");
         gameManager = obj.GetComponent<GameManager>();
         stageGrid = obj.GetComponent<GameManager>().stageGrid;
