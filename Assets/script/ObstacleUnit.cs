@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class ObstacleUnit : MonoBehaviour
 {
-    public int HitCount = 0; // 個別のヒット数（未使用）
+    public int HitCount = 0;
     private GameManager gameManager; // ゲームマネージャーへの参照
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         HitCount = 0;
+
     }
 
     // Update is called once per frame
@@ -21,7 +24,7 @@ public class ObstacleUnit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit");
+
         HitCount++;
         Destroy(gameObject);
 
