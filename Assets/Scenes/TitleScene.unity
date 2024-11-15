@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 19830944}
   - component: {fileID: 19830943}
   - component: {fileID: 19830947}
-  - component: {fileID: 19830946}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -207,8 +206,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 19830946}
-        m_TargetAssemblyTypeName: ResultScene, Assembly-CSharp
+      - m_Target: {fileID: 19830947}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
         m_MethodName: Onclick
         m_Mode: 1
         m_Arguments:
@@ -257,18 +256,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19830940}
   m_CullTransparentMesh: 1
---- !u!114 &19830946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19830940}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ccadc8bc534e534b90f6b8398815826, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &19830947
 MonoBehaviour:
   m_ObjectHideFlags: 0
