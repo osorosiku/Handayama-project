@@ -34,8 +34,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Debug.Log("Total Hit Count: " + totalHitCount);
-        if (totalHitCount >= 3) // ヒット数の条件を満たしたらシーンを変更
+        if ((totalHitCount >= 3)||(Input.GetKeyDown(KeyCode.T))) // ヒット数の条件を満たしたらシーンを変更
         {
+            
             SceneManager.LoadScene("Result");
         }
     }
@@ -46,3 +47,5 @@ public class GameManager : MonoBehaviour
         totalHitCount++;
     }
 }
+
+
