@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public int totalHitCount = 0; // 全体のヒット数を管理する変数
     private ObstacleUnit[] obstacleUnits; // 障害物ユニットの配列
 
-    public int[,,] stageGrid = new int[8, 40, 100]; //x,z,level
+
 
 
 

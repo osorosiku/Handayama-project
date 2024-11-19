@@ -23,10 +23,10 @@ public class ObstacleManager : MonoBehaviour
         GameObject obj = GameObject.Find("GameManager");
         GameObject obj2 = GameObject.Find("Triger");
         gameManager = obj.GetComponent<GameManager>();
-        stageGrid = obj.GetComponent<GameManager>().stageGrid;
         gameLevel = obj2.GetComponent<is_triger>().gameLevel;
-        gameLevel = 1;
-        initGrid();
+        gameLevel = 5;
+        stageGrid = new int[6, 40, 100];
+        initGrid(); // 配列を初期化
         GenerateObstacle(gameLevel);
     }
 
@@ -50,7 +50,7 @@ public class ObstacleManager : MonoBehaviour
 
             for (int z = 0; z < 40; z++)
             {
-                for (int x = 0; x < 8; x++)
+                for (int x = 0; x < 6; x++)
                 {
                     float rand = (float)random.NextDouble();
 
@@ -91,21 +91,23 @@ public class ObstacleManager : MonoBehaviour
 
     void GenerateObstacle(int gl)
     {
-        float pz = -47;
-        for (int z = 0; z < 16; z++)
+        float pz = -47; // 初期のz位置
+        for (int z = 0; z < 16; z++) // z方向ループ
         {
-            float px = -14;
-            for (int x = 0; x < 8; x++)
+            float px = -14; // 初期のx位置
+            for (int x = 0; x < 6; x++) // x方向ループ
             {
-                if (stageGrid[x, z, gl] == 2)
+                if (stageGrid[x, z, gl] == 2) // 障害物の場合
                 {
                     Instantiate(obstacle, new Vector3(px, -1, pz), Quaternion.identity, parent);
-                    px += 5.5f;
                 }
+                px += 5.5f; // x位置を常に更新
             }
-            pz += 6;
+            pz += 6; // z位置を更新
         }
     }
+
+
 
 }
 
