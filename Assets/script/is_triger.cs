@@ -10,6 +10,8 @@ public class is_triger : MonoBehaviour
     private Vector3 nextstage_position;
     private GameManager gameManager;
 
+    public int gameLevel = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,7 @@ public class is_triger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player");
+            gameLevel++;
             SpawnStage();
         }
     }

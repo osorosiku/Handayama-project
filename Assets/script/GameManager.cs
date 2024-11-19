@@ -44,5 +44,6 @@ public class GameManager : MonoBehaviour
     public void IncrementHitCount()
     {
         totalHitCount++;
+        Debug.Log("Total Hit Count: " + totalHitCount);
     }
 }

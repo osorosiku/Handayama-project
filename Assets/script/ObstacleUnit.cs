@@ -12,7 +12,7 @@ public class ObstacleUnit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HitCount = 0;
+
 
     }
 
