@@ -12,12 +12,18 @@ public class is_triger : MonoBehaviour
 
     public int gameLevel = 0;
 
+    public GameObject obstacle;
+    private ObstacleManager obstacleUnit;
+
     // Start is called before the first frame update
     void Start()
     {
         nextstage_position = new Vector3(stage_transform.position.x, stage_transform.position.y, stage_transform.position.z + 100);
         GameObject obj = GameObject.Find("GameManager");
         gameManager = obj.GetComponent<GameManager>();
+        obstacleUnit = obstacle.GetComponent<ObstacleManager>();
+
+
     }
 
     // Update is called once per frame
@@ -28,10 +34,15 @@ public class is_triger : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+
+
+        obstacleUnit.GenerateObstacle(2);
         if (other.gameObject.tag == "Player")
         {
+            Debug.LogWarning("Player is in the trigger");
             gameLevel++;
             SpawnStage();
+            // GenerateObstacle(1);
         }
     }
 
@@ -40,6 +51,11 @@ public class is_triger : MonoBehaviour
         Instantiate(stage, nextstage_position, stage_transform.rotation);
         nextstage_position = new Vector3(stage_transform.position.x, stage_transform.position.y, stage_transform.position.z + 100);
 
+    }
+
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 300, 20), "Game Level: " + gameLevel);
     }
 }
 
