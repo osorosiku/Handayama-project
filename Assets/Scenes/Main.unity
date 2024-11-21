@@ -4911,29 +4911,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054534608}
-  - component: {fileID: 2054534607}
   m_Layer: 0
-  m_Name: ObstacleUnit (1)
+  m_Name: stageObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2054534607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054534606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b0fcf996528584381c2f126a179c1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triger: {fileID: 1003566732}
-  obstacle: {fileID: 4334015900741067413, guid: f5c051c88412df249bb4282b954f3c4e, type: 3}
-  gameLevel: 0
 --- !u!4 &2054534608
 Transform:
   m_ObjectHideFlags: 0
@@ -4943,7 +4927,7 @@ Transform:
   m_GameObject: {fileID: 2054534606}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.41, z: -1.18}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4960,7 +4944,7 @@ Transform:
   - {fileID: 303451674}
   - {fileID: 1251011235}
   - {fileID: 1983955351}
-  m_Father: {fileID: 181037274}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2065889805
 PrefabInstance:
@@ -5536,9 +5520,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4121332552675721706, guid: b2bf861a68316fc48b47288bbf2de4cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1945421458}
-    - targetCorrespondingSourceObject: {fileID: 4121332552675721706, guid: b2bf861a68316fc48b47288bbf2de4cf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2054534608}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2bf861a68316fc48b47288bbf2de4cf, type: 3}
 --- !u!1660057539 &9223372036854775807
@@ -5554,3 +5535,4 @@ SceneRoots:
   - {fileID: 1957672780}
   - {fileID: 1938881477}
   - {fileID: 1653299760}
+  - {fileID: 2054534608}

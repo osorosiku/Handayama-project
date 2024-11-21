@@ -9,7 +9,6 @@ public class ObstacleManager : MonoBehaviour
     public GameObject obstacle;
     private Transform parent;
 
-    public int gameLevel = 0;
     private int[,,] stageGrid;
 
 
@@ -24,10 +23,7 @@ public class ObstacleManager : MonoBehaviour
         GameObject obj = GameObject.Find("GameManager");
         GameObject obj2 = GameObject.Find("Triger");
         gameManager = obj.GetComponent<GameManager>();
-        gameLevel = obj2.GetComponent<is_triger>().gameLevel;
-        gameLevel = 5;
         stageGrid = gameManager.stageGrid;
-        //GenerateObstacle(gameLevel);
     }
 
     // Update is called once per frame
@@ -46,25 +42,27 @@ public class ObstacleManager : MonoBehaviour
     public void GenerateObstacle(int gl)
     {
         Debug.Log("GenerateObstacle");
-        float pz = -47;
+
+        // ステージの生成位置を調整
+        float baseZ = -47 + 50 * gl; // ゲームレベルに応じたZ座標の調整
+        float baseX = -14; // X座標の初期位置
+
         for (int z = 0; z < 16; z++)
         {
-            float px = -14;
+            float px = baseX;
             for (int x = 0; x < 6; x++)
             {
+                // 障害物がある場所で障害物を生成
                 if (stageGrid[x, z, gl] == 2)
-
-
-
                 {
-                    Instantiate(obstacle, new Vector3(px, -1, pz), Quaternion.identity, parent);
+                    Instantiate(obstacle, new Vector3(px, -1, baseZ + (z * 6)), Quaternion.identity, parent);
                 }
-                px += 5.5f;
+                px += 5.5f; // 次のX座標に移動
             }
-            pz += 6;
         }
     }
 }
+
 
 
 

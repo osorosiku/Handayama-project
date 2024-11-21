@@ -10,8 +10,6 @@ public class is_triger : MonoBehaviour
     private Vector3 nextstage_position;
     private GameManager gameManager;
 
-    public int gameLevel = 0;
-
     public GameObject obstacle;
     private ObstacleManager obstacleUnit;
 
@@ -36,12 +34,13 @@ public class is_triger : MonoBehaviour
     {
 
 
-        obstacleUnit.GenerateObstacle(2);
+        obstacleUnit.GenerateObstacle(GameManager.gameLevel);
         if (other.gameObject.tag == "Player")
         {
             Debug.LogWarning("Player is in the trigger");
-            gameLevel++;
+            GameManager.gameLevel++;
             SpawnStage();
+            obstacleUnit.GenerateObstacle(GameManager.gameLevel);
             // GenerateObstacle(1);
         }
     }
@@ -55,7 +54,7 @@ public class is_triger : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 300, 20), "Game Level: " + gameLevel);
+        GUI.Label(new Rect(10, 10, 300, 20), "Game Level: " + GameManager.gameLevel);
     }
 }
 

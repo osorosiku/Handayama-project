@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private ObstacleUnit[] obstacleUnits; // 障害物ユニットの配列
     public int[,,] stageGrid = new int[6, 40, 100];
 
-
+    public static int gameLevel = 0;
 
 
 
