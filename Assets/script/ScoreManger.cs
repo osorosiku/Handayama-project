@@ -22,4 +22,8 @@ public class ScoreManager : MonoBehaviour
 
     score_num += 1;
   }
+  public void IncrementScore(int increment)
+  {
+    score_num += increment;
+  }
 }

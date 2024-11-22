@@ -43,21 +43,23 @@ public class ObstacleManager : MonoBehaviour
     {
         Debug.Log("GenerateObstacle");
 
-        // ステージの生成位置を調整
-        float baseZ = -47 + 50 * gl; // ゲームレベルに応じたZ座標の調整
-        float baseX = -14; // X座標の初期位置
+
+        float baseZ = -47 + (100 * (gl + 1)); // ゲームレベルに応じたZ座標の調整
+        float baseX = -15;
 
         for (int z = 0; z < 16; z++)
         {
             float px = baseX;
-            for (int x = 0; x < 6; x++)
+            for (int x = 0; x < 10; x++)
             {
                 // 障害物がある場所で障害物を生成
                 if (stageGrid[x, z, gl] == 2)
                 {
-                    Instantiate(obstacle, new Vector3(px, -1, baseZ + (z * 6)), Quaternion.identity, parent);
+                    Instantiate(obstacle, new Vector3(px, -1, (baseZ + (z * 6))), Quaternion.identity, parent);
+
                 }
-                px += 5.5f; // 次のX座標に移動
+
+                px += 3.01f;// 次のX座標に移動
             }
         }
     }

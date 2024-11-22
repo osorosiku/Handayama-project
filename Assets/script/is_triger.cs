@@ -12,14 +12,19 @@ public class is_triger : MonoBehaviour
 
     public GameObject obstacle;
     private ObstacleManager obstacleUnit;
+    private ItemManage itemManaer;
+    public GameObject itemunit;
+    bool isCol = false;
 
     // Start is called before the first frame update
     void Start()
     {
         nextstage_position = new Vector3(stage_transform.position.x, stage_transform.position.y, stage_transform.position.z + 100);
         GameObject obj = GameObject.Find("GameManager");
+        GameObject obj2 = GameObject.Find("Item");
         gameManager = obj.GetComponent<GameManager>();
         obstacleUnit = obstacle.GetComponent<ObstacleManager>();
+        itemManaer = obj2.GetComponent<ItemManage>();
 
 
     }
@@ -34,14 +39,19 @@ public class is_triger : MonoBehaviour
     {
 
 
-        obstacleUnit.GenerateObstacle(GameManager.gameLevel);
-        if (other.gameObject.tag == "Player")
+
+        if (other.gameObject.tag == "Player" && !isCol)
         {
-            Debug.LogWarning("Player is in the trigger");
-            GameManager.gameLevel++;
-            SpawnStage();
-            obstacleUnit.GenerateObstacle(GameManager.gameLevel);
-            // GenerateObstacle(1);
+            {
+                isCol = true;
+
+                SpawnStage();
+                obstacleUnit.GenerateObstacle(GameManager.gameLevel);
+                GameManager.gameLevel++;
+                itemManaer.GenerateItem(GameManager.gameLevel);
+                // GenerateObstacle(1);
+
+            }
         }
     }
 

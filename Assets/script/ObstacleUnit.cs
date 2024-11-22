@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ObstacleUnit : MonoBehaviour
 {
-    public int HitCount = 0;
+    private int HitCount = 0;
     private GameManager gameManager; // ゲームマネージャーへの参照
-
+    private bool hasCollided = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
     }
 
@@ -24,20 +24,17 @@ public class ObstacleUnit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
-        HitCount++;
-        Destroy(gameObject);
-
-        // ヒットしたら GameManager のカウントを増やす
-        if (gameManager != null)
+        if (collision.gameObject.CompareTag("Player") && !hasCollided)
         {
+            hasCollided = true;
+            Destroy(gameObject);
+
+
             gameManager.IncrementHitCount();
         }
     }
 
+
     // GameManager との紐付け用メソッド
-    public void SetGameManager(GameManager manager)
-    {
-        gameManager = manager;
-    }
+
 }
