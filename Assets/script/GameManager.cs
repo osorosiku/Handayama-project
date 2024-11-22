@@ -11,15 +11,14 @@ public class GameManager : MonoBehaviour
 
     public static int gameLevel = 0;
 
-
-
-
+    private SE_Manager seManager; // SE_Managerの参照
 
     void Start()
     {
-
         initGrid();
 
+        // SE_Managerコンポーネントを取得
+        seManager = FindObjectOfType<SE_Manager>(); // シーン内のSE_Managerを探す
     }
 
     // Update is called once per frame
@@ -38,6 +37,12 @@ public class GameManager : MonoBehaviour
         totalHitCount++;
         Debug.Log("Total Hit Count: " + totalHitCount);
         Debug.Log("Total Hit Count: " + totalHitCount + " (called at " + Time.time + ")");
+
+        // ヒット数が増えるたびにサウンド2を再生
+        if (seManager != null)
+        {
+            seManager.PlaySound2(); // Sound2を鳴らすメソッド
+        }
     }
 
     void initGrid()
@@ -91,3 +96,4 @@ public class GameManager : MonoBehaviour
         }
     }
 }
+
