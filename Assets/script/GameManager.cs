@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
         for (int level = 1; level <= 100; level++)
         {
-            float obstacleRate = Mathf.Clamp(0.1f + (level - 1) * 0.02f, 0.1f, 0.6f);
+            float obstacleRate = Mathf.Clamp(0.2f + (level - 1) * 0.02f, 0.1f, 0.6f);
             float itemRate = Mathf.Clamp(0.02f - (level - 1) * 0.01f, 0.05f, 0.2f);
 
             for (int z = 0; z < 40; z++)
