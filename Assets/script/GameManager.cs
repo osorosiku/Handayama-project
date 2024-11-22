@@ -28,7 +28,9 @@ public class GameManager : MonoBehaviour
         if (totalHitCount >= 3) // ヒット数の条件を満たしたらシーンを変更
         {
             SceneManager.LoadScene("Result");
+
         }
+        EndGame();
     }
 
     // ヒットカウントを増やすメソッドを作成
@@ -94,6 +96,20 @@ public class GameManager : MonoBehaviour
                 Debug.Log(row.Trim()); // 各行を出力
             }
         }
+    }
+    private void EndGame()
+    {
+        //Escが押された時
+        if (Input.GetKey(KeyCode.Escape))
+        {
+
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
+#else
+            Application.Quit();//ゲームプレイ終了
+#endif
+        }
+
     }
 }
 
