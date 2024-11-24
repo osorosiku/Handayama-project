@@ -16,7 +16,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteKey("Score");
+        //PlayerPrefs.DeleteKey("MainScenePlayCount");
+        int playCount = PlayerPrefs.GetInt("MainScenePlayCount", 0);
+        playCount++;
+        PlayerPrefs.SetInt("MainScenePlayCount", playCount);
         PlayerPrefs.Save(); // 忘れずに保存PlayerPrefs.DeleteKey("Score");
         initGrid();
         gameLevel = 0;

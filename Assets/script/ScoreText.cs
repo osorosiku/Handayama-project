@@ -17,7 +17,7 @@ public class ScoreText : MonoBehaviour
     void Update()
     {
         uiText.text = "Score:" + score_num; // スコアを表示
-        score_num += 1;// 1ずつ加算
+        score_num += 1;
     }
 
     public void IncrementScore(int increment)
