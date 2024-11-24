@@ -12,13 +12,18 @@ public class GameManager : MonoBehaviour
     public static int gameLevel = 0;
 
     private SE_Manager seManager; // SE_Managerの参照
+    private ScoreText scoretext;
 
     void Start()
     {
+        PlayerPrefs.DeleteKey("Score");
+        PlayerPrefs.Save(); // 忘れずに保存PlayerPrefs.DeleteKey("Score");
         initGrid();
+        gameLevel = 0;
 
         // SE_Managerコンポーネントを取得
         seManager = FindObjectOfType<SE_Manager>(); // シーン内のSE_Managerを探す
+        scoretext = GameObject.Find("ScoreText ").GetComponent<ScoreText>();
     }
 
     // Update is called once per frame
@@ -27,6 +32,8 @@ public class GameManager : MonoBehaviour
         // Debug.Log("Total Hit Count: " + totalHitCount);
         if (totalHitCount >= 3) // ヒット数の条件を満たしたらシーンを変更
         {
+            PlayerPrefs.SetInt("Score", scoretext.score_num);
+            PlayerPrefs.Save();
             SceneManager.LoadScene("Result");
 
         }
@@ -53,7 +60,7 @@ public class GameManager : MonoBehaviour
 
         for (int level = 1; level <= 100; level++)
         {
-            float obstacleRate = Mathf.Clamp(0.2f + (level - 1) * 0.02f, 0.1f, 0.6f);
+            float obstacleRate = Mathf.Clamp(0.25f + (level - 1) * 0.02f, 0.1f, 0.7f);
             float itemRate = Mathf.Clamp(0.02f - (level - 1) * 0.01f, 0.05f, 0.2f);
 
             for (int z = 0; z < 40; z++)
